@@ -1,4 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import hljs from 'vue3-hljs'
+import './assets/highlight/styles/atelier-savanna-light.css'
+// import SubApp from './SubApp.vue'
+import {router} from './router/router.js'
+import '@/assets/style.less'
+const mainApp = createApp(App)
 
-createApp(App).mount('#app')
+mainApp.use(hljs)
+mainApp.use(router)
+mainApp.mount('#app')
+//这里的mainApp是一个单独的实例
+// const subApp = createApp(SubApp)
+
+// subApp.mount('#sub-app')

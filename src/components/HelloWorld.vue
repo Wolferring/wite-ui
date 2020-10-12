@@ -1,4 +1,6 @@
 <template>
+  <h1>{{name}}</h1>
+  <p>Template支持多标签</p>
   <div class="hello">
     <h1>{{ msg }}</h1>
     <p>
@@ -33,6 +35,11 @@
 <script>
 export default {
   name: 'HelloWorld',
+  data(){
+    return {
+      name:"Whimsy"
+    }
+  },
   props: {
     msg: String
   }

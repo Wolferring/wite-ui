@@ -1,26 +1,55 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="main-container">
+    <Navigation id="navigation"></Navigation>
+    <router-view id="main-router-view"></router-view>
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Navigation from './components/Navigation.vue'
+import {onMounted} from 'vue'
+//ref让变量变成响应式的
 
 export default {
+  setup(){
+    onMounted(()=>{
+
+    })
+    return {}
+  },
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Navigation
+  },
 }
 </script>
 
-<style>
+<style lang="less">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family:Pingfang SC, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  height:100vh;
+  overflow:hidden;
+}
+.main-container{
+  display:flex;
+  height:100%;
+  overflow: hidden;
+  justify-content:flex-start;
+  align-items: flex-start;
+}
+#main-router-view{
+  height:100%;
+  flex:1;
+  overflow:auto;
+  padding:0 120px;
+}
+#navigation{
+  flex:0 0 300px;
+  height:100%;
+  overflow:auto;
 }
 </style>
