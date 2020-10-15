@@ -8,7 +8,8 @@
 <script>
   import {ref,toRefs,watch} from 'vue'
   export default {
-    emits: [ "close" ],
+    name:"w-modal",
+    emits: [ "close","open","update:visible"],
     props: {
       visible:{
         type:Boolean
@@ -33,15 +34,23 @@
         emit('update:visible',false)
         closed.value = true
       }
+      const show = ()=>{
+        emit('update:visible',true)
+        closed.value = false
+      }
       watch(visible,(newValue)=>{
         if(newValue){
+          emit('open',visible)
           closed.value = false
         }else{
-          // if(!closed) emit()
+          emit('close',visible)
+          closed.value = true
         }
       })
+
       return {
         hide,
+        show,
         closed,
         modalClick
       }

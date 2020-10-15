@@ -3,24 +3,58 @@ import Intro from '../views/intro.vue'
 import About from '../views/about.vue'
 
 import ButtonExample from '../views/buttonExample.vue'
+import ModalExample from '../views/modalExample.vue'
+import SwitchExample from '../views/switchExample.vue'
 
 const routes = [
-  { path: '/', redirect: '/intro' },
+  { path: '/', redirect: '/intro',meta:{
+    nav:false
+  }},
   {
     path:"/intro",
     name:"intro",
-    component: Intro
+    component: Intro,
+    meta:{
+      nav:true,
+      cn:"简介"
+    }
   },
   {
     path:"/about",
     name:"about",
-    component: About
+    component: About,
+    meta:{
+      nav:true,
+      cn:"关于"
+    }
   },  
   {
     path:"/example/button",
     name:"button",
-    component: ButtonExample
-  },    
+    component: ButtonExample,
+    meta:{
+      nav:true,
+      cn:"按钮组件"
+    }
+  },
+  {
+    path:"/example/modal",
+    name:"modal",
+    component: ModalExample,
+    meta:{
+      nav:true,
+      cn:"模态框组件"
+    }
+  },
+  {
+    path:"/example/switch",
+    name:"switch",
+    component: SwitchExample,
+    meta:{
+      nav:true,
+      cn:"开关组件"
+    }
+  },          
 ]
 export const routerHistory = createWebHistory()
 

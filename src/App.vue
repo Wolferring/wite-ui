@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <Navigation id="navigation"></Navigation>
+    <Navigation id="navigation" :expand="expand"></Navigation>
     <router-view id="main-router-view"></router-view>
   </div>
 
@@ -8,19 +8,27 @@
 
 <script>
 import Navigation from './components/Navigation.vue'
-import {onMounted} from 'vue'
+import {ref,onMounted,computed} from 'vue'
 //ref让变量变成响应式的
 
 export default {
   setup(){
+    const expand = ref(false)
     onMounted(()=>{
 
     })
-    return {}
+    return {
+      expand
+    }
   },
+  // provide(){
+  //   return {
+  //     navExpand:computed(()=>{return this.expand})
+  //   }
+  // },
   name: 'App',
   components: {
-    Navigation
+    Navigation,
   },
 }
 </script>

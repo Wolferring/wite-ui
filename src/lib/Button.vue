@@ -1,5 +1,8 @@
 <template>
-  <button class="w-button" :class="buttonClass" :disabled="disabled||loading">
+  <button 
+    class="w-button" 
+    :class="buttonClass" 
+    :disabled="disabled||loading">
     <span v-if="loading" class="w-button-loading" ></span>
     <slot></slot>
   </button>
@@ -7,6 +10,7 @@
 <style lang="less" scoped>
 .w-button{
   display: inline-block;
+  height:auto;
   line-height: 1;
   white-space: nowrap;
   cursor: pointer;
@@ -26,6 +30,9 @@
   padding: 10px 16px;
   font-size: 14px;
   border-radius: 4px;  
+  &+&{
+    margin-left:10px;
+  }
   &:hover,&:focus{
     color: #409eff;
     border-color: #c6e2ff;
@@ -63,6 +70,15 @@
   to{
     transform: rotate(360deg);
   }  
+}
+.w-button-size-mini{
+  font-size: 12px;
+  padding:6px 8px;
+}
+.w-button-size-normal{}
+.w-button-size-large{
+  font-size: 16px;
+  padding:16px 24px;
 }
 .w-button-type-default{
   &.is-disabled{
@@ -134,7 +150,11 @@ export default{
   props:{
     size:{
       type:String,
-      default:'normal'
+      default:'normal',
+      validator: function (value) {
+        // 这个值必须匹配下列字符串中的一个
+        return ['normal','mini','large'].indexOf(value) !== -1
+      }       
     },
     type:{
       type:String,
