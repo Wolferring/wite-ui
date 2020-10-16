@@ -8,24 +8,42 @@
 
 <script>
 import Navigation from './components/Navigation.vue'
-import {ref,onMounted,computed} from 'vue'
+import {ref,onMounted,computed,onBeforeMount,provide} from 'vue'
 //ref让变量变成响应式的
 
 export default {
   setup(){
     const expand = ref(false)
+    const DARKMODE = ref(false)
+    onBeforeMount(()=>{
+      if (window.matchMedia ) {
+        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
+          DARKMODE.value = true
+        }
+        window.matchMedia('(prefers-color-scheme: dark)')
+              .addEventListener('change', event => {
+          if (event.matches) {
+            DARKMODE.value = true
+          } else {
+            DARKMODE.value = false
+          }
+        })      
+      }
+    })
     onMounted(()=>{
 
     })
+    provide('DARKMODE',computed(()=>{return this.DARKMODE}))
     return {
-      expand
+      expand,
+      DARKMODE
     }
   },
-  // provide(){
-  //   return {
-  //     navExpand:computed(()=>{return this.expand})
-  //   }
-  // },
+  provide(){
+    return {
+      'DARKMODE':computed(()=>{return this.DARKMODE})
+    }
+  },
   name: 'App',
   components: {
     Navigation,

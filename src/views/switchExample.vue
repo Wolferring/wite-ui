@@ -33,6 +33,7 @@
       off-value="0"
       ></w-switch>
       「{{switchValue2}}」
+      <w-button size="mini" type="primary" @click="switchValue2 = 10">非法修改</w-button>
     <br>
     <br> 
     <w-switch 
@@ -142,7 +143,7 @@
   </div>
 </template>
 <script>
-  import {Switch} from '../lib/index.js'
+  import {Switch,Button} from '../lib/index.js'
   import {
     reactive
   } from 'vue'
@@ -151,7 +152,8 @@
   } from 'vue'
   export default{
     components:{
-      'w-switch':Switch
+      'w-switch':Switch,
+      'w-button':Button
     },
     setup(){
       const switchValue1 = ref(false)

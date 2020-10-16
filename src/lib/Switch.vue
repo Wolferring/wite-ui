@@ -31,6 +31,7 @@
     .w-switch-label{
       font-weight:500;
       transition:all .3s;
+      color:@text-content;
       &-left{
         padding-right: 10px;
         color:@primary-color;
@@ -98,7 +99,7 @@
   }
 </style>
 <script>
-  import {toRefs,onMounted,computed,nextTick} from 'vue'
+  import {ref,inject,watch,watchEffect,toRefs,onMounted,computed,nextTick} from 'vue'
   export default{
     name:"w-switch",
     emits:['update:modelValue','change'],
@@ -133,20 +134,29 @@
     },
     setup(props,{emit}){
       const propsRef = toRefs(props)
+      const checkState = ref(false)
 
-      const checkState = computed(()=>{
-        return propsRef.modelValue.value==propsRef.onValue.value
+      watch(propsRef.modelValue,(newValue,oldValue)=>{
+
+        if(propsRef.modelValue.value==propsRef.onValue.value){
+          checkState.value = true
+        }else if(propsRef.modelValue.value==propsRef.offValue.value){
+          checkState.value = false
+        }else{
+          emit("update:modelValue",oldValue)
+          console.warn("Switch的传入值与on-value,off-value不匹配")
+        }
+      },{
+        immediate:true
       })
-
+      //mounted后立即执行一次watch
       const checkboxDisabled = propsRef.disabled
-      onMounted(()=>{
-        
-      })
-
+      const DARKMODE = inject('DARKMODE')
       const checkboxClass = computed(()=>{
         return {
           'is-checked':checkState.value,
           'is-disabled':checkboxDisabled.value,
+          'is-dark':DARKMODE.value
         }
       })
       const toggleSwitch = async ()=>{

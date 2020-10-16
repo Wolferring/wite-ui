@@ -11,7 +11,7 @@
     </h3>    
     <div class="demo-button-list">
       <w-button type="primary" @click="toggleModalState">v-model打开</w-button>
-      <w-button type="primary" @click="$refs.modal.show()">ref打开</w-button>
+      <w-button type="primary" @click="openViaRef">ref打开</w-button>
       
     </div>
     <teleport to="body">
@@ -36,6 +36,7 @@ import {Button,Modal} from '../lib/index.js'
 import {ref,onMounted} from 'vue'
 export default{
   setup(){
+    const modal = ref(null)
     const modalState = ref(false)
     const modalCloseOnBlankClick = ref(false)
     const modalContent = ref("Modal Content")
@@ -47,10 +48,15 @@ export default{
     const modalStateChange = (state)=>{
       alert(state.value?"Modal打开":"Modal关闭")
     }
+    const openViaRef = ()=>{
+      modal.value.show()
+    }
     return {
+      modal,
       modalCloseOnBlankClick,
       modalState,
       modalStateChange,
+      openViaRef,
       modalContent,
       toggleModalState
     }        

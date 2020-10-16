@@ -2,7 +2,8 @@
   <div class="navigation">
     <div class="navigation-top">
       <div class="flex-row">
-        <h4><i>Wite-UI</i></h4>
+        <img src="@/assets/logo.png" class="navigation-logo" alt="">
+        <h4>Wite-UI</h4>
         <a href="https://github.com/Wolferring/wite-ui" target="_blank">
           Github
           <svg class="icon outbound" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path><polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg>
@@ -23,8 +24,8 @@
     </div>
     <div class="navigation-list">
       <router-link class="navigation-link" to="/example/button">Button</router-link>
-      <router-link class="navigation-link" to="/example/modal">Modal</router-link>
       <router-link class="navigation-link" to="/example/switch">Switch</router-link> 
+      <router-link class="navigation-link" to="/example/modal">Modal</router-link>
       <router-link class="navigation-link" to="/example/">Tabs</router-link>            
     </div>
   </div>
@@ -68,10 +69,17 @@
     background-position: bottom left;
   }
   .navigation-top{
-    padding:20px 10px;
+    padding:15px 10px;
     h4{
       font-size:20px;
+      line-height: 30px;
     }
+  }
+  .navigation-logo{
+    display:inline-block;
+    width:100%;
+    max-width:30px;
+    vertical-align:middle;
   }
   .navigation-title{
     padding:10px 0;
@@ -88,14 +96,20 @@
     flex-direction:column;
     text-align:left;
     .navigation-link{
-      padding:20px;
+      height:50px;
+      line-height:50px;
       padding-left:30px;
       transition:all .3s ease;
+      background-color:transparent;
+
       &.router-link-active{
         background-color:#fff;
+        box-shadow:0 0 10px #ddd;
+
       }
       &:hover{
         background-color:#fefefe;
+        box-shadow:0 0 20px #ccc;
       }
     }
   }

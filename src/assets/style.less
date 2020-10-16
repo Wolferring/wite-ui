@@ -348,7 +348,7 @@ textarea {
     resize: vertical;
 }
 ::selection{
-  background-color:#45a1e2;
+  background-color:@primary-color;
   color:#fff;
 }
 .chromeframe {
@@ -361,19 +361,19 @@ textarea {
 .content-view{
   padding:10px 15px;
   font-size:14px;
-  color:#666;
+  color:@text-content;
   padding-bottom: 30px;
   box-sizing:border-box;
   .content-title{
     margin:15px 0;
     font-size:20px;
-    color:#333;
+    color:@text-heading;
     font-weight:500;
   }
   .content-head{
     margin:10px 0;
     font-size:16px;
-    color:#333;
+    color:@text-heading;
     font-weight:500;
   }
 }
@@ -401,7 +401,7 @@ textarea {
       }
       th{
         font-weight:500;
-        color:#333;
+        color:@text-heading;
       }
     }
     tbody{
@@ -415,5 +415,12 @@ textarea {
     td,th{
       padding:20px 10px;
     }
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  html,body{
+    // background-color:#121212;
+    // color:#fff;
   }
 }

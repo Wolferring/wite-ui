@@ -1,6 +1,6 @@
 <template>
   <transition name="dialog-fade">
-    <div v-show="visible" class="modal" @click.self = "modalClick">
+    <div v-show="visible" class="w-modal" @click.self = "modalClick">
       <slot></slot>
     </div>
   </transition>
@@ -90,7 +90,7 @@
     }
 }
 
-  .modal{
+  .w-modal{
     display:flex;
     position: fixed;
     top: 0;
@@ -103,6 +103,7 @@
     align-items: center;
     background-color: rgba(0,0,0,.7);
     color:#fff;
+    backdrop-filter:blur(10px);
   }
   ::v-slotted(p){
     font-style: italic;

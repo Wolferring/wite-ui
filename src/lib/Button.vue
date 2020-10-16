@@ -16,7 +16,7 @@
   cursor: pointer;
   background: #fff;
   border: 1px solid #dcdfe6;
-  color: #606266;
+  color: @text-content;
   -webkit-appearance: none;
   text-align: center;
   box-sizing: border-box;
