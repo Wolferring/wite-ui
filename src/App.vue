@@ -39,11 +39,6 @@ export default {
       DARKMODE
     }
   },
-  provide(){
-    return {
-      'DARKMODE':computed(()=>{return this.DARKMODE})
-    }
-  },
   name: 'App',
   components: {
     Navigation,

@@ -144,13 +144,13 @@
 }
 </style>
 <script>
-import {toRefs,computed} from 'vue'
+import {toRefs,computed,inject} from 'vue'
+
 export default{
   name:"w-button",
   props:{
     size:{
       type:String,
-      default:'normal',
       validator: function (value) {
         // 这个值必须匹配下列字符串中的一个
         return ['normal','mini','large'].indexOf(value) !== -1
@@ -180,17 +180,23 @@ export default{
       disabled,
       loading
     } = toRefs(props)
+    
+    const $wite = inject('$wite')
+    const buttonSize = computed(()=>{
+       return (size&&size.value) || ($wite || {}).size; 
+    })
 
     const buttonClass = computed(()=>{
       return {
         [`w-button-type-${type.value}`]:type.value,
-        [`w-button-size-${size.value}`]:size.value,
+        [`w-button-size-${buttonSize.value}`]:buttonSize,
         ['is-disabled']:disabled.value,
         ['is-loading']:loading.value
       }
     })
 
     return {
+      buttonSize,
       buttonClass
     }
   }

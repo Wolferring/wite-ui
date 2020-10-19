@@ -1,7 +1,17 @@
 <template>
   <transition name="dialog-fade">
-    <div v-show="visible" class="w-modal" @click.self = "modalClick">
-      <slot></slot>
+    <div v-if="visible" class="w-modal" @click.self = "modalClick">
+      <div class="w-modal-container">
+        <div class="w-modal-title">
+          {{title}}
+        </div>
+        <div class="w-modal-content">
+          <slot></slot>
+        </div>
+        <div class="w-modal-footer" v-if="$slots.footer">
+          <slot name="footer"></slot>
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -11,6 +21,9 @@
     name:"w-modal",
     emits: [ "close","open","update:visible"],
     props: {
+      title:{
+        type:String
+      },
       visible:{
         type:Boolean
       },
@@ -23,7 +36,7 @@
     setup(props,{emit}){
       //内部调用emit的时候，可以使用context中的emit方法
       let closed = ref(false)
-      const { closeOnBlankClick,visible } = toRefs(props)
+      const { closeOnBlankClick,visible,title } = toRefs(props)
       const modalClick = ()=>{
 
         if(closeOnBlankClick.value){
@@ -57,7 +70,7 @@
     }
   }
 </script>
-<style lang="less" scoped>
+<style lang="less">
 .dialog-fade-enter-active {
     animation: dialog-fade-in .3s
 }
@@ -102,10 +115,24 @@
     justify-content: center;
     align-items: center;
     background-color: rgba(0,0,0,.7);
-    color:#fff;
     backdrop-filter:blur(10px);
-  }
-  ::v-slotted(p){
-    font-style: italic;
+    .w-modal-container{
+      background-color:#fff;
+      min-width:400px;
+    }
+    .w-modal-title{
+      padding:20px 20px;
+      border-bottom:1px solid @border-title;
+      user-select:none;
+    }
+    .w-modal-content{
+      padding:20px;
+    }
+    .w-modal-footer{
+      display: flex;
+      justify-content:flex-end;
+      align-items:center;
+      padding:20px;
+    }
   }
 </style>

@@ -143,7 +143,6 @@
   </div>
 </template>
 <script>
-  import {Switch,Button} from '../lib/index.js'
   import {
     reactive
   } from 'vue'
@@ -151,10 +150,6 @@
     ref
   } from 'vue'
   export default{
-    components:{
-      'w-switch':Switch,
-      'w-button':Button
-    },
     setup(){
       const switchValue1 = ref(false)
       const switchValue2 = ref(100)

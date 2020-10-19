@@ -9,7 +9,12 @@
     <h3 class="content-head">
       类型
     </h3>    
+    <div class="demo-switch-list">
+      <p>点击背景关闭</p>
+      <w-switch v-model="modalCloseOnBlankClick" ></w-switch>
+    </div>
     <div class="demo-button-list">
+
       <w-button type="primary" @click="toggleModalState">v-model打开</w-button>
       <w-button type="primary" @click="openViaRef">ref打开</w-button>
       
@@ -18,21 +23,21 @@
       <w-modal 
         @open="modalStateChange"  
         @close="modalStateChange" 
+        title="Hello Modal"
         :closeOnBlankClick = "modalCloseOnBlankClick"
         ref="modal" 
         v-model:visible="modalState">
         <p>Hello Wite-UI</p>
         <p>{{modalContent}}</p>
-        <br>
-        <w-button type="primary" @click="$refs.modal.hide()">通过ref关闭</w-button>
-        <br>
-        <w-button type="primary" @click="modalState = false">通过v-model关闭</w-button>
+        <template v-slot:footer>
+          <w-button @click="$refs.modal.hide()">通过ref关闭</w-button>&nbsp;
+          <w-button type="primary" @click="modalState = false">通过v-model关闭</w-button>
+        </template>
       </w-modal>
     </teleport>
   </div>
 </template>
 <script>
-import {Button,Modal} from '../lib/index.js'
 import {ref,onMounted} from 'vue'
 export default{
   setup(){
@@ -46,7 +51,7 @@ export default{
       modalState.value = !modalState.value
     }  
     const modalStateChange = (state)=>{
-      alert(state.value?"Modal打开":"Modal关闭")
+      console.log(state.value?"Modal打开":"Modal关闭")
     }
     const openViaRef = ()=>{
       modal.value.show()
@@ -60,10 +65,6 @@ export default{
       modalContent,
       toggleModalState
     }        
-  },
-  components:{
-    "w-modal":Modal,
-    "w-button":Button
   }
 }
 </script>

@@ -112,19 +112,10 @@
   </div>
 </template>
 <style lang="less">
-  .demo-button-list{
-    margin: 20px 0;
-    display:flex;
-    justify-content:flex-start;
-    align-items:flex-end;
-    .w-button{
 
-    }
-  }
 </style>
 <script>
   import {ref,reactive} from 'vue'
-  import {Button} from '@/lib/index'
   export default{
     setup(){
       let code = reactive({})
@@ -135,9 +126,6 @@
       return {
         code
       }
-    },
-    components:{
-      "w-button":Button
     }
   }
 </script>

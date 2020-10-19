@@ -1,15 +1,15 @@
 <template>
-  <div class="w-switch" :class="checkboxClass" @click="toggleSwitch">
+  <div class="w-switch" :class="checkboxClass" @click.prevent="toggleSwitch">
     <input 
       :value="modelValue" 
       :checked="checkState" 
       type="checkbox" 
-      :true-value="true" 
+      :true-value="onValue" 
       class="w-switch-input"
       >
-    <span v-if="offText.length" class="w-switch-label w-switch-label-left">{{offText}}</span>
+    <span v-if="offText&&offText.length" class="w-switch-label w-switch-label-left">{{offText}}</span>
     <span class="w-switch-dot"></span>
-    <span class="w-switch-label w-switch-label-right" v-if="onText.length" >
+    <span class="w-switch-label w-switch-label-right" v-if="onText&&onText.length" >
       {{onText}}
     </span>
 
