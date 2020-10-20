@@ -26,7 +26,7 @@
       <router-link class="navigation-link" to="/example/button">Button</router-link>
       <router-link class="navigation-link" to="/example/switch">Switch</router-link> 
       <router-link class="navigation-link" to="/example/modal">Modal</router-link>
-      <router-link class="navigation-link" to="/example/">Tabs</router-link>            
+      <router-link class="navigation-link" to="/example/tab">Tabs</router-link>            
     </div>
   </div>
 </template>

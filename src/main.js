@@ -9,7 +9,6 @@ import '@/assets/style.less'
 const mainApp = createApp(App)
 
 mainApp.use(wite,{
-  size:"mini"
 })
 mainApp.use(hljs)
 mainApp.use(router)

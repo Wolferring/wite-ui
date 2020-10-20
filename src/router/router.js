@@ -5,6 +5,7 @@ import About from '../views/about.vue'
 import ButtonExample from '../views/buttonExample.vue'
 import ModalExample from '../views/modalExample.vue'
 import SwitchExample from '../views/switchExample.vue'
+import TabExample from '../views/tabExample.vue'
 
 const routes = [
   { path: '/', redirect: '/intro',meta:{
@@ -54,7 +55,16 @@ const routes = [
       nav:true,
       cn:"开关组件"
     }
-  },          
+  },
+  {
+    path:"/example/tab",
+    name:"switch",
+    component: TabExample,
+    meta:{
+      nav:true,
+      cn:"选项卡组件"
+    }
+  },            
 ]
 export const routerHistory = createWebHistory()
 

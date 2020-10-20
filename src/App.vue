@@ -33,7 +33,7 @@ export default {
     onMounted(()=>{
 
     })
-    provide('DARKMODE',computed(()=>{return this.DARKMODE}))
+    provide('DARKMODE',computed(()=>{return DARKMODE}))
     return {
       expand,
       DARKMODE

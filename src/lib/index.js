@@ -1,12 +1,16 @@
 import {default as Button} from './Button.vue'
 import {default as Modal} from './Modal.vue'
 import {default as Switch} from './Switch.vue'
+import {default as Tab} from './Tabs.vue'
+import {default as TabPanel} from './Tab.vue'
 
 const wite = {}
 const components = [
   Button,
   Modal,
-  Switch
+  Switch,
+  Tab,
+  TabPanel
 ]
 
 components.forEach(item=>{
