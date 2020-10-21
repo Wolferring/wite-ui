@@ -376,6 +376,13 @@ textarea {
     color:@text-heading;
     font-weight:500;
   }
+  p{
+    line-height:100%;
+    margin:5px 0;
+    .hljs{
+      padding:5px;
+    }
+  }
 }
 .hljs{
   line-height:1.6;
@@ -433,7 +440,10 @@ textarea {
     }
   }
 }
-
+.inline{
+  display:inline-block;
+  vertical-align:middle;
+}
 @media (prefers-color-scheme: dark) {
   html,body{
     // background-color:#121212;

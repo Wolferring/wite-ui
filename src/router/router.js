@@ -6,11 +6,17 @@ import ButtonExample from '../views/buttonExample.vue'
 import ModalExample from '../views/modalExample.vue'
 import SwitchExample from '../views/switchExample.vue'
 import TabExample from '../views/tabExample.vue'
+import ImageExample from '../views/imageExample.vue'
+import RadioExample from '../views/radioExample.vue'
 
 const routes = [
-  { path: '/', redirect: '/intro',meta:{
-    nav:false
-  }},
+  { 
+    path: '/', 
+    redirect: '/intro',
+    meta:{
+      nav:false
+    }
+  },
   {
     path:"/intro",
     name:"intro",
@@ -58,13 +64,31 @@ const routes = [
   },
   {
     path:"/example/tab",
-    name:"switch",
+    name:"tab",
     component: TabExample,
     meta:{
       nav:true,
       cn:"选项卡组件"
     }
-  },            
+  },
+  {
+    path:"/example/image",
+    name:"image",
+    component: ImageExample,
+    meta:{
+      nav:true,
+      cn:"图片组件"
+    }
+  }, 
+  {
+    path:"/example/radio",
+    name:"radio",
+    component: RadioExample,
+    meta:{
+      nav:true,
+      cn:"单选组件"
+    }
+  },                
 ]
 export const routerHistory = createWebHistory()
 
