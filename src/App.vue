@@ -16,27 +16,13 @@ export default {
     const expand = ref(false)
     const DARKMODE = ref(false)
     onBeforeMount(()=>{
-      if (window.matchMedia ) {
-        if(window.matchMedia('(prefers-color-scheme: dark)').matches){
-          DARKMODE.value = true
-        }
-        window.matchMedia('(prefers-color-scheme: dark)')
-              .addEventListener('change', event => {
-          if (event.matches) {
-            DARKMODE.value = true
-          } else {
-            DARKMODE.value = false
-          }
-        })      
-      }
+
     })
     onMounted(()=>{
 
     })
-    provide('DARKMODE',computed(()=>{return DARKMODE}))
     return {
-      expand,
-      DARKMODE
+      expand
     }
   },
   name: 'App',

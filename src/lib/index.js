@@ -1,5 +1,4 @@
 import {reactive,ref} from "vue"
-
 import {default as Button} from './Button.vue'
 import {default as Modal} from './Modal.vue'
 import {default as Switch} from './Switch.vue'
@@ -9,6 +8,7 @@ import {default as Image} from './Image.vue'
 import {default as Radio} from './Radio.vue'
 import {default as RadioButton} from './RadioButton.vue'
 import {default as RadioGroup} from './RadioGroup.vue'
+import {default as InputNumber} from './InputNumber.vue'
 
 const wite = {}
 const components = [
@@ -20,7 +20,8 @@ const components = [
   Image,
   Radio,
   RadioButton,
-  RadioGroup  
+  RadioGroup,
+  InputNumber
 ]
 
 components.forEach(item=>{
@@ -64,6 +65,14 @@ wite.install = (Vue,opts = {})=>{
 export {
   Button,
   Modal,
-  Switch
+  Switch,
+  Tab,
+  TabPanel,
+  Image,
+  Radio,
+  RadioButton,
+  RadioGroup,
+  InputNumber
 }
+
 export default wite

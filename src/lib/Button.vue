@@ -180,12 +180,12 @@ export default{
       disabled,
       loading
     } = toRefs(props)
-    
+
     const $wite = inject('$wite')
     const buttonSize = computed(()=>{
        return (size&&size.value) || ($wite || {}).size; 
     })
-
+    //注入全局配置变量$wite
     const buttonClass = computed(()=>{
       return {
         [`w-button-type-${type.value}`]:type.value,

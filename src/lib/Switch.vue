@@ -151,12 +151,10 @@
       })
       //mounted后立即执行一次watch
       const checkboxDisabled = propsRef.disabled
-      const DARKMODE = inject('DARKMODE')
       const checkboxClass = computed(()=>{
         return {
           'is-checked':checkState.value,
-          'is-disabled':checkboxDisabled.value,
-          'is-dark':DARKMODE.value
+          'is-disabled':checkboxDisabled.value
         }
       })
       const toggleSwitch = async ()=>{

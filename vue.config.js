@@ -7,6 +7,6 @@ module.exports = {
   pluginOptions: {
     'style-resources-loader': {
       preProcessor: 'less',
-      patterns: [path.resolve(__dirname, './src/assets/var.less')]    }
+      patterns: [path.resolve(__dirname, './src/lib/theme/var.less')]    }
   } 
 }

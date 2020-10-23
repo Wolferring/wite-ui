@@ -24,6 +24,7 @@
     </div>
     <div class="navigation-list">
       <router-link class="navigation-link" to="/example/button">Button</router-link>
+      <router-link class="navigation-link" to="/example/inputNumber">Input Number</router-link>        
       <router-link class="navigation-link" to="/example/radio">Radio</router-link>       
       <router-link class="navigation-link" to="/example/switch">Switch</router-link> 
       <router-link class="navigation-link" to="/example/modal">Modal</router-link>

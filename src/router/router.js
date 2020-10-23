@@ -8,6 +8,7 @@ import SwitchExample from '../views/switchExample.vue'
 import TabExample from '../views/tabExample.vue'
 import ImageExample from '../views/imageExample.vue'
 import RadioExample from '../views/radioExample.vue'
+import InputNumberExample from '../views/inputNumberExample.vue'
 
 const routes = [
   { 
@@ -88,7 +89,16 @@ const routes = [
       nav:true,
       cn:"单选组件"
     }
-  },                
+  },
+  {
+    path:"/example/inputNumber",
+    name:"inputNumber",
+    component: InputNumberExample,
+    meta:{
+      nav:true,
+      cn:"数字输入"
+    }
+  },                  
 ]
 export const routerHistory = createWebHistory()
 
