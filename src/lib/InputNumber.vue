@@ -1,14 +1,49 @@
 <template>
   <div class="w-input-number">
-    <span @click="decrease">-</span>
+    <span class="w-input-number-label w-input-number-label-decrease" @click="decrease">-</span>
     <input type="text" 
+    class="w-input"
     @input="handleInputChange" 
     @change="handleInputChange"
     :value="displayValue">
-    <span @click="increase">+</span>
+    <span class="w-input-number-label w-input-number-label-increase" @click="increase" >+</span>
 
   </div>
 </template>
+<style lang="less">
+  .w-input-number{
+    display:inline-flex;
+    align-items:center;
+    border:1px solid @border-title;
+    border-radius:5px;
+    height:40px;
+    line-height: 40px;
+    overflow:hidden;
+   .w-input-number-label{
+    display:block;
+    line-height:38px;
+    padding:0 20px;
+    cursor:pointer;
+    user-select:none;
+    font-size: 18px;
+    &:hover{
+      background-color: @primary-color;
+      color:#fff;
+    }
+    &:active{
+      box-shadow: 0px 0px 5px #666 inset;
+    }    
+   } 
+   .w-input{
+    border:none;
+    text-align: center;
+    flex:0 0 80px;
+    width:80px;
+    height:100%;
+    line-height:38px;
+   }
+  }
+</style>
 <script>
   import {computed,ref,watch,toRefs} from "vue"
   export default{
@@ -65,6 +100,7 @@
         }
         userInput.value = null;
       }  
+
       watch(propsRef.modelValue,(newValue)=>{
         setCurrentValue(newValue)
 

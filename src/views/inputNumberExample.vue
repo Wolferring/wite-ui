@@ -9,13 +9,23 @@
     <h3 class="content-head">
       基本使用
     </h3>      
-    <w-input-number step="2" v-model="radio1"></w-input-number>
-    {{radio1}}
+    <w-input-number max="100" v-model="number1"></w-input-number>
+    {{number1}}
     <div class="highlight">
       <pre>
         <code v-hljs class="xml">{{code.basic}}</code>
       </pre>    
-    </div>      
+    </div> 
+    <h3 class="content-head">
+      步进
+    </h3>      
+    <w-input-number v-model="number2" step="3"></w-input-number>
+    {{number2}}
+    <div class="highlight">
+      <pre>
+        <code v-hljs class="xml">{{code.step}}</code>
+      </pre>    
+    </div>          
     <h3 class="content-head">
       属性
     </h3>  
@@ -96,17 +106,14 @@
   } from 'vue'
   export default{
     setup(){
-      let radio1 = ref(2)
-      let radio2 = ref("2")
-      let radio3 = ref("4")
+      let number1 = ref(2)
+      let number2 = ref(2)
       let code = reactive({})
-      code.basic = `<w-radio v-model="radio1" label="1">选项1</w-radio>\n<w-radio v-model="radio1" label="2">选项2</w-radio>`
-      code.group = `<w-radio-group v-model="radio3">\n  <w-radio  label="1">选项1</w-radio>\n  <w-radio  label="2">选项2</w-radio>\n  <w-radio disabled label="3">选项3</w-radio>\n  <w-radio  label="4">选项4</w-radio>\n</w-radio-group>`
-      code.button = `<w-radio-group v-model="radio2">\n  <w-radio-button  label="1">选项1</w-radio-button>\n  <w-radio-button  label="2">选项2</w-radio-button>\n  <w-radio-button disabled  label="3">选项3</w-radio-button>\n  <w-radio-button  label="4">选项4</w-radio-button>\n</w-radio-group>`
+      code.basic = `<w-input-number v-model="number1"></w-input-number>`
+      code.step = `<w-input-number v-model="number2" step="3"></w-input-number>`
       return{
-        radio1,
-        radio2,
-        radio3,
+        number1,
+        number2,
         code
       }
     }
