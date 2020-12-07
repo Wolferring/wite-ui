@@ -12,8 +12,9 @@
   </div>
 </template>
 <script>
-  import { useAttr} from './hook/index.js'
-  import { computed,ref ,onMounted, watch,reactive} from "vue"
+  import { useAttr } from './hook/index.js'
+  import { on, off, getScrollContainer, isInContainer } from './util/dom.js'
+  import { computed,ref ,onMounted, watch,reactive,getCurrentInstance} from "vue"
   export default{
     name:"w-img",
     inheritAttrs: false,
@@ -30,9 +31,15 @@
           // 这个值必须匹配下列字符串中的一个
           return ['fill', 'contain', 'cover', 'none', 'scale-down'].indexOf(value) !== -1
         }         
-      }
+      },
+      lazy:{
+        type:Boolean,
+        default:false
+      },
+      scrollContainer: {}
     },
     setup(props,{emit}){
+      let show = ref(false)
       const loading = ref(true)
       const attrs = useAttr()
       const sourceUrl = computed(()=>{
@@ -65,9 +72,45 @@
         }
       })
 
+      watch(show,()=>{
+        if(show.value){
+          loadImage()
+        }
+      })
 
+      const instance = getCurrentInstance()
+      let selfScrollContainer = null, selfLazyLoadHandler = null
+      const addLazyLoadListner = ()=>{
+        const {scrollContainer} = props
+        let _scrollContainer = null
+
+        if(typeof(scrollContainer) == "string"){
+          _scrollContainer = document.querySelector(scrollContainer)
+        }else{
+          _scrollContainer = getScrollContainer(instance.ctx.$el)
+
+        }
+        if (_scrollContainer) {
+          selfScrollContainer = _scrollContainer;
+          selfLazyLoadHandler = handleLazyLoad;
+          on(_scrollContainer, 'scroll', selfLazyLoadHandler);
+          handleLazyLoad();
+        }
+
+      }
+      const handleLazyLoad = ()=>{
+        if (isInContainer(instance.ctx.$el,selfScrollContainer)) {
+          show.value = true;
+          // this.removeLazyLoadListener();
+        }    
+      }
       onMounted(()=>{
-        loadImage()
+
+        if(props.lazy){
+          addLazyLoadListner()
+        }else{
+          loadImage()
+        }
       })
       return {
         sourceUrl,

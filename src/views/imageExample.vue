@@ -14,7 +14,7 @@
       <w-img class="demo-image" style="width: 50px;height: 100px;" src="https://v3.vuejs.org/logo.png" fit="contain"></w-img> 
       <w-img class="demo-image" style="width: 50px;height: 100px;" src="https://v3.vuejs.org/logo.png" fit="cover"></w-img>          
       <w-img class="demo-image" style="width: 50px;height: 100px;" src="https://v3.vuejs.org/logo.png" fit="none"></w-img>
-      <w-img class="demo-image" style="width: 50px;height: 100px;" src="https://v3.vuejs.org/logo.png" fit="scale-down"></w-img>          
+      <w-img lazy class="demo-image" style="width: 50px;height: 100px;" src="https://v3.vuejs.org/logo.png" fit="scale-down"></w-img>          
     </div>    
     <div class="highlight">
       <pre>

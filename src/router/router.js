@@ -100,8 +100,8 @@ const routes = [
     }
   },                  
 ]
-export const routerHistory = createWebHistory()
 
+export const routerHistory = createWebHistory()
 export const router = createRouter({
   history:routerHistory,
   routes:routes
