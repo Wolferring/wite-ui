@@ -1,8 +1,6 @@
 # Wite-UI 
 ## Via Whimsy
 
-
-
 基于Vue3开发的简单UI库
 
 ## Project setup
